@@ -1,0 +1,8 @@
+pip install microbmp
+from microbmp import MicroBMP
+4b_2x2 = MicroBMP(2, 2, 24)  # Create a 2(width) by 2(height) 24-bit image.
+img_24b_2x2 = MicroBMP().load("img_24b_2x2.bmp")
+img_24b_2x2.parray
+
+>>> print(new_img_1b_3x2)
+BMP image, indexed, 1-bit, 3x2 pixels, 70 bytes
