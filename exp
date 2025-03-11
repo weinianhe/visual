@@ -1,0 +1,12 @@
+exp(x) = 1 + x + x^2/2! + x^3/3! + ...
+
+function exp(x,nth){
+    double sum = 1;
+    double bottom = 1;
+     for (int i=1;i<nth;i++){
+       bottom = bottom * (i); // i = 1; bottom = 1; i = 2;; bottom = 2*1; i=3; bottom = 3*2*1;
+       sum += Math.Pow(x,i) / bottom
+     }
+}
+
+https://en.wikipedia.org/wiki/Metric_space
