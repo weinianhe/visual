@@ -44,7 +44,24 @@ if up right is unmark ( not out of bound) mark 1
 [1][1][1]
 [1][1][]
 [1][][]
-since since 
+since last known command up right, repeat
+if up right is out of bound then down
+if down is unmark ( not out of bound) mark 1
+[1][1][1]
+[1][1][1]
+[1][][]
+since last known command is down, going left down
+if left down is unmark ( not out of bound) mark 1
+[1][1][1]
+[1][1][1]
+[1][1][]
+since last known command is left down and marked ( out of bound) to right
+if right is unmark ( not out of bound) mark 1
+[1][1][1]
+[1][1][1]
+[1][1][1]
+----------
+
 
 
 
