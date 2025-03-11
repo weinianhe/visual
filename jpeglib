@@ -1,3 +1,54 @@
+RGB Image 
+Convert into YCbCr Color space
+which separates illuminance (Cr) and chrominance.
+down sample chrominance.
+Discrete Cosine Transform
+8x8 grid
+64 base cosin waves
+one channel, illuminance or chrominance.
+center 128. DCT #2
+DCT3 inverse DCT
+https://www.youtube.com/watch?v=yBX8GFqt6GA
+y Component -intense
+
+[0,0][0,1][1,0][2,0][1,1][0,2]
+Visual space travel
+[][][]
+[][][]
+[][][]
+start postion = 0,0
+if Left, Top = out of bound , left = out of bound, top = out of bound = start
+set mark 1
+[1][][]
+[][][]
+[][][]
+navigate to right. if unmark = mark 1 
+[1][1][]
+[][][]
+[][][]
+navigate to left down. if unmark = mark 1
+[1][1][]
+[1][][]
+[][][]
+navigate to left down. if out of bound, left = out of bound, if down unmark = mark 1
+[1][1][]
+[1][][]
+[1][][] last known command down
+since only down, going up right now.
+if up right is unmark ( not out of bound) mark 1
+[1][1][]
+[1][1][]
+[1][][]
+since last known command up right, repeat
+if up right is unmark ( not out of bound) mark 1
+[1][1][1]
+[1][1][]
+[1][][]
+since since 
+
+
+
+
 pip install jpeglib
 Pixel data
 Decompress the input.jpeg into spatial representation in numpy array with
@@ -10,3 +61,21 @@ Write spatial representation in numpy arrray back to file with
 
 im.write_spatial('output.jpeg')
 https://pypi.org/project/jpeglib/
+
+
+libjpeg version
+It is possible to choose, which version of libjpeg should be used.
+
+jpeglib.version.set('6b')
+Currently jpeglib supports all versions of libjpeg from 6b to 9e, libjpeg-turbo 2.1.0 and mozjpeg 4.0.3. Their source codes is baked inside the package and thus distributed with it, avoiding external dependency.
+
+Get currently used libjpeg version by
+
+version = jpeglib.version.get()
+You can also set a libjpeg version for a scope only.
+
+jpeglib.version.set('6b')
+im = jpeglib.read_spatial('image.jpeg') # using 6b
+with jpeglib.version('9e'):
+    im = jpeglib.read_spatial('image.jpeg') # using 9e
+im = jpeglib.read_spatial('image.jpeg') # using 6b again
