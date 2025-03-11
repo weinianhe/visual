@@ -92,6 +92,45 @@ version = jpeglib.version.get()
 You can also set a libjpeg version for a scope only.
 
 jpeglib.version.set('6b')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple EyeDropper Example</title>
+</head>
+<body>
+  <button id="eyedropperButton">😀 Eyedropper</button>
+
+  <script>
+    let eyedropperButton = document.querySelector("#eyedropperButton");
+
+    function setup() {
+      if (window.EyeDropper === undefined) {
+        console.log("Unsupported!");
+        return;
+      } else {
+        eyedropperButton.addEventListener("click", pickColor, false);
+      }
+    }
+    setup();
+
+    async function pickColor(event) {
+      let eyeDropper = new EyeDropper();
+
+      try {
+        let pickedColor = await eyeDropper.open();
+        console.log(pickedColor.sRGBHex);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  </script>
+</body>
+</html>
+https://www.kirupa.com/javascript/eyedropper_colorpicker.htm
+
 im = jpeglib.read_spatial('image.jpeg') # using 6b
 with jpeglib.version('9e'):
     im = jpeglib.read_spatial('image.jpeg') # using 9e
