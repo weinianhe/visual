@@ -1,3 +1,12 @@
 pip install jpeglib
+Pixel data
+Decompress the input.jpeg into spatial representation in numpy array with
+import jpeglib
+im = jpeglib.read_spatial('input.jpeg')
+im.spatial
+You can specify parameters such as output color space, DCT method, dithering, etc.
 
+Write spatial representation in numpy arrray back to file with
+
+im.write_spatial('output.jpeg')
 https://pypi.org/project/jpeglib/
