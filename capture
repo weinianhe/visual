@@ -1,0 +1,28 @@
+import cv2
+
+# Initialize the camera (0 is usually the default camera)
+cam = cv2.VideoCapture(0)
+
+# Check if the camera is opened successfully
+if not cam.isOpened():
+    raise IOError("Cannot open webcam")
+
+# Read a frame from the camera
+ret, frame = cam.read()
+
+# Check if the frame was read successfully
+if not ret:
+    raise IOError("Cannot read frame")
+
+# Display the captured frame
+cv2.imshow('Captured Image', frame)
+
+# Save the captured frame to a file
+cv2.imwrite('captured_image.png', frame)
+
+# Wait for a key press (0 means wait indefinitely)
+cv2.waitKey(0)
+
+# Release the camera and close all windows
+cam.release()
+cv2.destroyAllWindows()
